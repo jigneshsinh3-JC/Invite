@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f0f8;
+            color: #4a3b52;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .about-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 35px 25px;
+            box-shadow: 0 10px 30px rgba(147, 112, 219, 0.15);
+            text-align: center;
+            border: 2px solid #e2d7ec;
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            color: #6a4a87;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #53356b;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #6c5a77;
+            margin-bottom: 20px;
+        }
+
+        .price-tag {
+            background: #fdf6e2;
+            border: 1px dashed #c5a059;
+            color: #8c6b23;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-web,
+        .btn-create {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: 0.2s;
+        }
+
+        .btn-web {
+            background: #6a4a87;
+            color: white;
+            box-shadow: 0 4px 12px rgba(106, 74, 135, 0.25);
+        }
+
+        .btn-create {
+            background: #c5a059;
+            color: white;
+            box-shadow: 0 4px 12px rgba(197, 160, 89, 0.35);
+        }
+
+            .btn-web:hover,
+            .btn-create:hover {
+                transform: translateY(-2px);
+            }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #9a84a9;
+            text-decoration: none;
+        }
+
+        /* Popup */
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(74, 59, 82, 0.45);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .popup-box {
+            background: white;
+            max-width: 320px;
+            width: 100%;
+            border-radius: 18px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid #e2d7ec;
+            box-shadow: 0 10px 25px rgba(106,74,135,.2);
+        }
+
+            .popup-box i {
+                font-size: 2rem;
+                color: #c5a059;
+                margin-bottom: 10px;
+            }
+
+            .popup-box h3 {
+                color: #53356b;
+                margin-bottom: 10px;
+            }
+
+            .popup-box p {
+                font-size: 0.85rem;
+                margin-bottom: 18px;
+            }
+
+        .popup-close {
+            background: #6a4a87;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .popup-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="about-card">
+
+        <div class="icon-box">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+
+        <h2>
+            Create Interactive Digital Invitations With Us
+        </h2>
+
+        <p>
+            Make your special milestones memorable with modern,
+            responsive and beautifully tailored digital invitation
+            pages for your guests.
+        </p>
+
+
+        <div class="price-tag">
+            Flat Pricing at just ₹100/- + 18% GST for 1 Week [Unlimited Viewers]
+        </div>
+
+
+        <a href="https://bmcti.com/"
+           target="_blank"
+           class="btn-web">
+
+            <i class="fa-solid fa-globe"></i>
+            Visit Our Website
+
+        </a>
+
+
+        <button class="btn-create"
+                onclick="openPopup()">
+
+            <i class="fa-solid fa-heart"></i>
+            Make Your Own Invitation
+
+        </button>
+
+
+        <a href="index.html" class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Invitation
+
+        </a>
+
+    </div>
+
+
+    <!-- Popup -->
+
+    <div class="popup-overlay" id="popup">
+
+        <div class="popup-box">
+
+            <i class="fa-solid fa-gift"></i>
+
+            <h3>
+                Coming Soon
+            </h3>
+
+            <p>
+                🚧 This service is currently under development.<br><br>
+
+                We will launch it very soon.<br><br>
+
+                WhatsApp us to connect for your personalized
+                digital invitation requirements.
+            </p>
+
+
+            <a href="https://wa.me/919510917569?text=Hey!%20I%20liked%20your%20Live%20Interactive%20Invitation%20Service%2C%20want%20to%20know%20more..!"
+               target="_blank"
+               class="popup-whatsapp">
+
+                <i class="fa-brands fa-whatsapp"></i>
+                WhatsApp Us
+
+            </a>
+
+            <br>
+
+            <button class="popup-close"
+                    onclick="closePopup()">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>function openPopup()
+{
+    document.getElementById("popup").style.display = "flex";
+}
+
+
+function closePopup()
+{
+    document.getElementById("popup").style.display = "none";
+}</script>
+
+
+</body>
+
+</html>
