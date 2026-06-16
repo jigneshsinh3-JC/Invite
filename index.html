@@ -7,25 +7,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-
         /* =================================================
                    Base Reset
-                ================================================= */
-
+        ================================================= */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html,
-        body {
+        html, body {
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -33,11 +29,68 @@
             color: #4a3b52;
         }
 
+        /* =================================================
+                   Premium Intro Loader Curtain Style
+        ================================================= */
+        #intro-loader {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3c2352 0%, #1e102b 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s cubic-bezier(0.65, 0, 0.35, 1), visibility 1s;
+        }
+
+        .intro-blessing-text {
+            font-family: 'Hind Vadodara', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #c5a059;
+            letter-spacing: 1px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: elegantFadeIn 1.8s ease-out forwards 0.3s;
+            text-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+            padding: 0 20px;
+        }
+
+        @keyframes elegantFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Clean fade away class activated by JavaScript */
+        .fade-away {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Static Top Blessing (Backup inside Card layout) */
+        .top-blessing-card {
+            font-family: 'Hind Vadodara', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #c5a059;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
 
         /* =================================================
                    Main Background
-                ================================================= */
-
+        ================================================= */
         body {
             background: url('bginvite.png') no-repeat center center fixed;
             background-size: cover;
@@ -49,11 +102,9 @@
             overflow: hidden;
         }
 
-
         /* =================================================
                    Floating Bubbles Layer
-                ================================================= */
-
+        ================================================= */
         .live-particles {
             position: absolute;
             width: 100%;
@@ -64,7 +115,6 @@
             pointer-events: none;
         }
 
-
         .bubble {
             position: absolute;
             bottom: -80px;
@@ -74,41 +124,33 @@
             filter: blur(1px);
         }
 
-
             /* Lavender Bubbles */
             .bubble.lavender {
                 background: radial-gradient( circle, rgba(210,180,255,.75), rgba(186,153,219,.15) );
             }
-
 
             /* Gold Bubbles */
             .bubble.gold {
                 background: radial-gradient( circle, rgba(255,215,120,.7), rgba(212,175,55,.15) );
             }
 
-
         @keyframes floatMagic {
-
             0% {
                 transform: translateY(0) translateX(0) scale(.7);
                 opacity: 0;
             }
 
-
             15% {
                 opacity: .75;
             }
-
 
             50% {
                 transform: translateY(-50vh) translateX(20px) scale(1);
             }
 
-
             85% {
                 opacity: .45;
             }
-
 
             100% {
                 transform: translateY(-120vh) translateX(-25px) scale(1.3);
@@ -116,11 +158,9 @@
             }
         }
 
-
         /* =================================================
                    Water Touch Ripple Effect
-                ================================================= */
-
+        ================================================= */
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -132,15 +172,12 @@
             z-index: 3;
         }
 
-
         @keyframes waterRipple {
-
             0% {
                 width: 0;
                 height: 0;
                 opacity: .9;
             }
-
 
             100% {
                 width: 180px;
@@ -149,11 +186,9 @@
             }
         }
 
-
         /* =================================================
-                   Invitation Glass Card
-                ================================================= */
-
+                   Invitation Glass Card Layout
+        ================================================= */
         .invitation-card {
             background: rgba(255,255,255,0.10);
             backdrop-filter: blur(3px);
@@ -173,18 +208,18 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-
-        /* =================================================
-                   Desktop Enhancement ONLY
-                   Mobile remains untouched
-                ================================================= */
-
+            /* Class toggled after animation load completes */
+            .invitation-card.revealed {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
         @media (min-width: 768px) {
-
-
             .invitation-card {
                 background: rgba(255,255,255,0.22);
                 backdrop-filter: blur(9px);
@@ -193,10 +228,6 @@
                 border: 2px solid rgba(255,255,255,.55);
             }
         }
-
-        /* =================================================
-           Decorative Corner Elements
-        ================================================= */
 
         .invitation-card::before,
         .invitation-card::after {
@@ -217,20 +248,17 @@
             right: 12px;
         }
 
-
         /* =================================================
-           Logo
+                   Content Element Styles
         ================================================= */
-
         .logo-container {
-            width: 100px;
-            height: 100px;
-            margin-top: 5px;
+            width: 95px;
+            height: 95px;
+            margin-top: 2px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
 
             .logo-container img {
                 max-width: 100%;
@@ -238,20 +266,11 @@
                 object-fit: contain;
             }
 
-
-        /* Rings Accent */
-
         .rings-icon {
             font-size: 1.2rem;
             color: #c5a059;
             margin-top: -5px;
         }
-
-
-        /* =================================================
-           Names & Titles
-        ================================================= */
-
 
         .names {
             font-family: 'Cinzel', serif;
@@ -261,7 +280,6 @@
             line-height: 1.3;
         }
 
-
             .names span {
                 font-family: 'Great Vibes', cursive;
                 font-size: 2.2rem;
@@ -270,8 +288,6 @@
                 margin: 3px 0;
             }
 
-
-
         .tagline {
             font-style: italic;
             font-size: .85rem;
@@ -279,19 +295,11 @@
             line-height: 1.4;
         }
 
-
-
         .ceremony-title {
             font-family: 'Great Vibes', cursive;
             font-size: 2.2rem;
             color: #6a4a87;
         }
-
-
-        /* =================================================
-           Date Section
-        ================================================= */
-
 
         .date-badge {
             width: 85%;
@@ -299,7 +307,6 @@
             border-bottom: 1px solid #e2d7ec;
             padding: 8px 0;
         }
-
 
         .date-day {
             font-size: .8rem;
@@ -309,7 +316,6 @@
             color: #7b628c;
         }
 
-
         .date-main {
             font-family: 'Cinzel', serif;
             font-size: 1.3rem;
@@ -318,7 +324,6 @@
             margin: 2px 0;
         }
 
-
         .time-note {
             font-size: .75rem;
             font-weight: 500;
@@ -326,13 +331,9 @@
             margin-top: 2px;
         }
 
-
-
         /* =================================================
-           Buttons
+                   Buttons Custom Grid Elements
         ================================================= */
-
-
         .btn-container {
             width: 100%;
             padding: 0 10px;
@@ -340,7 +341,6 @@
             flex-direction: column;
             gap: 12px;
         }
-
 
         .btn {
             display: flex;
@@ -357,11 +357,9 @@
             transition: transform .1s ease;
         }
 
-
-        .btn:active {
-            transform: scale(.97);
-        }
-
+            .btn:active {
+                transform: scale(.97);
+            }
 
         .btn-venue {
             background: #6a4a87;
@@ -369,17 +367,11 @@
             box-shadow: 0 4px 12px rgba(106,74,135,.25);
         }
 
-
         .btn-whatsapp {
             background: #25D366;
             color: white;
             box-shadow: 0 4px 12px rgba(37,211,102,.25);
         }
-
-
-        /* =================================================
-           NEW Elegant Venue Address
-        ================================================= */
 
         .venue-address {
             margin-top: 2px;
@@ -391,24 +383,17 @@
             padding: 0 12px;
         }
 
-
-        /* =================================================
-           Footer
-        ================================================= */
-
-
         .footer-wrapper {
             margin-bottom: 5px;
             border-top: 1px solid #e2d7ec;
+            width: 100%;
         }
-
 
         .footer-text {
             font-size: .8rem;
             color: #9a84a9;
             line-height: 1.3;
         }
-
 
         .about-link {
             display: inline-block;
@@ -420,12 +405,12 @@
             opacity: .8;
         }
 
+            .about-link:hover {
+                opacity: 1;
+                text-decoration: underline;
+            }
 
-        .about-link:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-        /* Custom Bootstrap-to-CSS Fallbacks for the Button Row */
+        /* Fallbacks to force single row layouts natively without full framework stylesheet */
         .col-12 {
             width: 100%;
         }
@@ -439,13 +424,11 @@
             flex-wrap: nowrap !important;
         }
 
-        /* g-2 implementation: creates a 8px gap between elements */
         .g-2 {
             gap: 8px;
         }
 
         .col-6 {
-            /* Splits the row perfectly in half while accounting for the flex gap */
             flex: 0 0 calc(50% - 4px);
             width: calc(50% - 4px);
         }
@@ -458,156 +441,99 @@
             white-space: nowrap !important;
         }
 
-        /* me-1 adds a small right margin to the icon inside the button */
         .me-1 {
             margin-right: 4px !important;
         }
 
-        /* Adjusting horizontal padding slightly for maximum mobile screen compatibility */
         .px-1 {
             padding-left: 4px !important;
             padding-right: 4px !important;
         }
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- ==========================================
-         Floating Premium Bubbles (30 particles)
-    =========================================== -->
-
-
-    <div class="live-particles">
-
-
-        <div class="bubble lavender" style="left:4%;width:10px;height:10px;animation-duration:8s;"></div>
-
-        <div class="bubble gold" style="left:9%;width:16px;height:16px;animation-delay:1s;animation-duration:12s;"></div>
-
-        <div class="bubble lavender" style="left:15%;width:12px;height:12px;animation-delay:2s;animation-duration:10s;"></div>
-
-        <div class="bubble gold" style="left:22%;width:8px;height:8px;animation-delay:5s;animation-duration:9s;"></div>
-
-        <div class="bubble lavender" style="left:30%;width:20px;height:20px;animation-delay:1s;animation-duration:14s;"></div>
-
-        <div class="bubble gold" style="left:38%;width:14px;height:14px;animation-delay:4s;animation-duration:11s;"></div>
-
-        <div class="bubble lavender" style="left:46%;width:9px;height:9px;animation-delay:6s;"></div>
-
-        <div class="bubble gold" style="left:55%;width:18px;height:18px;animation-duration:13s;"></div>
-
-        <div class="bubble lavender" style="left:63%;width:11px;height:11px;animation-delay:3s;"></div>
-
-        <div class="bubble gold" style="left:72%;width:15px;height:15px;animation-delay:5s;"></div>
-
-        <div class="bubble lavender" style="left:80%;width:13px;height:13px;animation-delay:7s;"></div>
-
-        <div class="bubble gold" style="left:88%;width:10px;height:10px;animation-delay:2s;"></div>
-
-
-        <!-- Remaining Premium Floating Bubbles -->
-
-        <div class="bubble lavender" style="left:92%;width:18px;height:18px;animation-delay:4s;animation-duration:15s;"></div>
-
-        <div class="bubble gold" style="left:96%;width:12px;height:12px;animation-delay:8s;animation-duration:10s;"></div>
-
-        <div class="bubble lavender" style="left:12%;width:22px;height:22px;animation-delay:9s;animation-duration:18s;"></div>
-
-        <div class="bubble gold" style="left:27%;width:11px;height:11px;animation-delay:11s;animation-duration:12s;"></div>
-
-        <div class="bubble lavender" style="left:42%;width:16px;height:16px;animation-delay:10s;animation-duration:14s;"></div>
-
-        <div class="bubble gold" style="left:58%;width:9px;height:9px;animation-delay:7s;animation-duration:9s;"></div>
-
-        <div class="bubble lavender" style="left:67%;width:21px;height:21px;animation-delay:13s;animation-duration:16s;"></div>
-
-        <div class="bubble gold" style="left:76%;width:14px;height:14px;animation-delay:6s;animation-duration:11s;"></div>
-
-        <div class="bubble lavender" style="left:83%;width:10px;height:10px;animation-delay:15s;animation-duration:13s;"></div>
-
-        <div class="bubble gold" style="left:35%;width:17px;height:17px;animation-delay:12s;animation-duration:15s;"></div>
-
-        <div class="bubble lavender" style="left:52%;width:13px;height:13px;animation-delay:5s;animation-duration:10s;"></div>
-
-        <div class="bubble gold" style="left:6%;width:15px;height:15px;animation-delay:14s;animation-duration:17s;"></div>
-
+    <div id="intro-loader">
+        <div class="intro-blessing-text">
+            || જય સ્વામિનારાયણ ||
+        </div>
     </div>
 
+    <div class="live-particles">
+        <div class="bubble lavender" style="left:4%;width:10px;height:10px;animation-duration:8s;"></div>
+        <div class="bubble gold" style="left:9%;width:16px;height:16px;animation-delay:1s;animation-duration:12s;"></div>
+        <div class="bubble lavender" style="left:15%;width:12px;height:12px;animation-delay:2s;animation-duration:10s;"></div>
+        <div class="bubble gold" style="left:22%;width:8px;height:8px;animation-delay:5s;animation-duration:9s;"></div>
+        <div class="bubble lavender" style="left:30%;width:20px;height:20px;animation-delay:1s;animation-duration:14s;"></div>
+        <div class="bubble gold" style="left:38%;width:14px;height:14px;animation-delay:4s;animation-duration:11s;"></div>
+        <div class="bubble lavender" style="left:46%;width:9px;height:9px;animation-delay:6s;"></div>
+        <div class="bubble gold" style="left:55%;width:18px;height:18px;animation-duration:13s;"></div>
+        <div class="bubble lavender" style="left:63%;width:11px;height:11px;animation-delay:3s;"></div>
+        <div class="bubble gold" style="left:72%;width:15px;height:15px;animation-delay:5s;"></div>
+        <div class="bubble lavender" style="left:80%;width:13px;height:13px;animation-delay:7s;"></div>
+        <div class="bubble gold" style="left:88%;width:10px;height:10px;animation-delay:2s;"></div>
+        <div class="bubble lavender" style="left:92%;width:18px;height:18px;animation-delay:4s;animation-duration:15s;"></div>
+        <div class="bubble gold" style="left:96%;width:12px;height:12px;animation-delay:8s;animation-duration:10s;"></div>
+        <div class="bubble lavender" style="left:12%;width:22px;height:22px;animation-delay:9s;animation-duration:18s;"></div>
+        <div class="bubble gold" style="left:27%;width:11px;height:11px;animation-delay:11s;animation-duration:12s;"></div>
+        <div class="bubble lavender" style="left:42%;width:16px;height:16px;animation-delay:10s;animation-duration:14s;"></div>
+        <div class="bubble gold" style="left:58%;width:9px;height:9px;animation-delay:7s;animation-duration:9s;"></div>
+        <div class="bubble lavender" style="left:67%;width:21px;height:21px;animation-delay:13s;animation-duration:16s;"></div>
+        <div class="bubble gold" style="left:76%;width:14px;height:14px;animation-delay:6s;animation-duration:11s;"></div>
+        <div class="bubble lavender" style="left:83%;width:10px;height:10px;animation-delay:15s;animation-duration:13s;"></div>
+        <div class="bubble gold" style="left:35%;width:17px;height:17px;animation-delay:12s;animation-duration:15s;"></div>
+        <div class="bubble lavender" style="left:52%;width:13px;height:13px;animation-delay:5s;animation-duration:10s;"></div>
+        <div class="bubble gold" style="left:6%;width:15px;height:15px;animation-delay:14s;animation-duration:17s;"></div>
+    </div>
 
-    <!-- Main Invitation Card -->
+    <div class="invitation-card" id="main-card">
 
-    <div class="invitation-card">
-
+        <div class="top-blessing-card">
+            || જય સ્વામિનારાયણ ||
+        </div>
 
         <div class="logo-container">
             <img src="logo.png" alt="JD Custom Monogram Logo">
         </div>
-
 
         <div class="rings-icon">
             <i class="fa-solid fa-ring"></i>
             <i class="fa-solid fa-ring" style="margin-left:-6px;"></i>
         </div>
 
-
         <h1 class="names">
             Er. Jignesh <span>&</span> Dr. Divya
         </h1>
 
-
-        <p class="tagline" style="font:xx-small">
+        <p class="tagline">
             Two hearts decided on forever.<br>
-            Along with our families, we invite you to be a part of the day our story begins..!
+            Along with our families, we invite you to be a part of the day our story begins.
         </p>
-
 
         <h2 class="ceremony-title">
             Engagement Ceremony
         </h2>
 
-
         <div class="date-badge">
-
-            <div class="date-day">
-                Sunday
-            </div>
-
-            <div class="date-main">
-                21 | 06 | 2026
-            </div>
-
+            <div class="date-day">Sunday</div>
+            <div class="date-main">21 | 06 | 2026</div>
             <div class="time-note">
                 God blessed us with each other,<br>
                 Your blessings are awaited from 06:30 PM
             </div>
-
         </div>
 
-
         <div class="btn-container">
-
-
-
-            <!-- Added small elegant venue address -->
-
             <div class="venue-address">
-                <span>
-                    <strong>
-                        <b>
-                            Venue📍: Dreamland Resort<br>
-                            Beside Narmada Canal, Near Halol,<br>
-                            Jarod, Vadodara, Gujarat, India - 391510
-                        </b>
-                    </strong>
-                </span>
+                <strong>
+                    Venue📍: Dreamland Resort<br>
+                    Beside Narmada Canal, Near Halol,<br>
+                    Jarod, Vadodara, Gujarat, India - 391510
+                </strong>
             </div>
 
             <div class="col-12">
-                <!-- flex-nowrap forces the items to stay on a single line; g-2 adds a small gap between buttons -->
                 <div class="row flex-nowrap g-2">
                     <div class="col-6">
                         <a href="https://maps.app.goo.gl/H6wvrzCmLJqXW5r89?g_st=ac"
@@ -627,98 +553,58 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
         <div class="footer-wrapper">
-
             <div class="footer-text" style="margin-top:4px;">
-
-                With Love |
-                <strong>Jignesh & Divya</strong>
-
+                With Love | <strong>Jignesh & Divya</strong>
             </div>
-
-
-            <a href="about.html"
-               class="about-link">
-
+            <a href="about.html" class="about-link">
                 Designed & Developed by <b><u>BMCTIPL</u></b>
-
             </a>
-
         </div>
-
 
     </div>
 
+    <script>
+        // Automatic Transition Management for Intro Screen
+        window.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('intro-loader');
+            const mainCard = document.getElementById('main-card');
 
-    <!-- =================================================
-         Premium Water Ripple Effect
-         Works on:
-         - Mouse Click
-         - Mobile Tap
-         - Finger Swipe
-    ================================================= -->
+            // Runs the intro display for exactly 2.5 seconds before smoothly removing it
+            setTimeout(() => {
+                loader.classList.add('fade-away');
+                mainCard.classList.add('revealed');
+            }, 2500);
+        });
 
-    <script>function createRipple(x, y) {
+        function createRipple(x, y) {
+            const ripple = document.createElement("div");
+            ripple.className = "ripple";
+            ripple.style.left = x + "px";
+            ripple.style.top = y + "px";
+            document.body.appendChild(ripple);
+            setTimeout(() => {
+                ripple.remove();
+            }, 1600);
+        }
 
-    const ripple = document.createElement("div");
+        /* Mouse click effect */
+        document.addEventListener("click", function (e) {
+            createRipple(e.clientX, e.clientY);
+        });
 
-    ripple.className = "ripple";
+        /* Mobile touch and swipe effect */
+        document.addEventListener("touchmove", function (e) {
+            const touch = e.touches[0];
+            createRipple(touch.clientX, touch.clientY);
+        });
 
-    ripple.style.left = x + "px";
-
-    ripple.style.top = y + "px";
-
-
-    document.body.appendChild(ripple);
-
-
-    setTimeout(() => {
-
-        ripple.remove();
-
-    }, 1600);
-
-}
-
-
-
-/* Mouse click effect */
-
-document.addEventListener("click", function(e){
-
-    createRipple(e.clientX, e.clientY);
-
-});
-
-
-/* Mobile touch and swipe effect */
-
-document.addEventListener("touchmove", function(e){
-
-    const touch = e.touches[0];
-
-    createRipple(
-        touch.clientX,
-        touch.clientY
-    );
-
-});
-
-
-document.addEventListener("touchstart", function(e){
-
-    const touch = e.touches[0];
-
-    createRipple(
-        touch.clientX,
-        touch.clientY
-    );
-
-});</script>
-
-
+        document.addEventListener("touchstart", function (e) {
+            const touch = e.touches[0];
+            createRipple(touch.clientX, touch.clientY);
+        });
+    </script>
 </body>
-
 </html>
