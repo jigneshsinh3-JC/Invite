@@ -424,6 +424,49 @@
             opacity: 1;
             text-decoration: underline;
         }
+        /* Custom Bootstrap-to-CSS Fallbacks for the Button Row */
+        .col-12 {
+            width: 100%;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .flex-nowrap {
+            flex-wrap: nowrap !important;
+        }
+
+        /* g-2 implementation: creates a 8px gap between elements */
+        .g-2 {
+            gap: 8px;
+        }
+
+        .col-6 {
+            /* Splits the row perfectly in half while accounting for the flex gap */
+            flex: 0 0 calc(50% - 4px);
+            width: calc(50% - 4px);
+        }
+
+        .w-100 {
+            width: 100% !important;
+        }
+
+        .text-nowrap {
+            white-space: nowrap !important;
+        }
+
+        /* me-1 adds a small right margin to the icon inside the button */
+        .me-1 {
+            margin-right: 4px !important;
+        }
+
+        /* Adjusting horizontal padding slightly for maximum mobile screen compatibility */
+        .px-1 {
+            padding-left: 4px !important;
+            padding-right: 4px !important;
+        }
     </style>
 
 </head>
@@ -545,14 +588,7 @@
 
 
         <div class="btn-container">
-            <a href="https://maps.app.goo.gl/H6wvrzCmLJqXW5r89?g_st=ac"
-               target="_blank"
-               class="btn btn-venue">
 
-                <i class="fa-solid fa-location-dot"></i>
-                Get Directions
-
-            </a>
 
 
             <!-- Added small elegant venue address -->
@@ -569,15 +605,27 @@
                 </span>
             </div>
 
-
-            <a href="https://wa.me/917043350823?text=Congratulations%20Jignesh%20and%20Divya!%20So%20happy%20for%20both%20of%20you.%20✨"
-               target="_blank"
-               class="btn btn-whatsapp">
-
-                <i class="fa-brands fa-whatsapp"></i>
-                Send Best Wishes.!
-
-            </a>
+            <div class="col-12">
+                <!-- flex-nowrap forces the items to stay on a single line; g-2 adds a small gap between buttons -->
+                <div class="row flex-nowrap g-2">
+                    <div class="col-6">
+                        <a href="https://maps.app.goo.gl/H6wvrzCmLJqXW5r89?g_st=ac"
+                           target="_blank"
+                           class="btn btn-venue w-100 text-nowrap px-1"
+                           style="font-size: 0.9rem;">
+                            <i class="fa-solid fa-location-dot me-1"></i>Directions
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="https://wa.me/917043350823?text=Congratulations%20Jignesh%20and%20Divya!%20So%20happy%20for%20both%20of%20you.%20✨"
+                           target="_blank"
+                           class="btn btn-whatsapp w-100 text-nowrap px-1"
+                           style="font-size: 0.9rem;">
+                            <i class="fa-brands fa-whatsapp me-1"></i>Best Wishes
+                        </a>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
